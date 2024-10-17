@@ -2,6 +2,7 @@ import express from "express"
 import mongoose from "mongoose"
 import userRouter from "./routes/products.router.js"
 import handlebars from 'express-handlebars'
+import bodyParser from "body-parser"
 import __dirname from './utils.js'
 
 const app = express()
@@ -9,6 +10,7 @@ const PORT = 8080
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
+app.use(bodyParser.urlencoded( {extended:true} ))
 
 app.engine('handlebars', handlebars.engine())
 app.set('views', __dirname + '/views')

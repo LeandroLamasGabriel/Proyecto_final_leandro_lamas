@@ -1,7 +1,44 @@
-<div></div>
-<h1>Productos</h1
+<div>
+    <h1>Productos: </h1>
 </div>
 
-<p id="allProducts">{{product}}</p>
+{{#if isValid}}
+<div>
+    {{#each docs }}
+        <div class="card center" style="width: 18rem;">
+            <link class="card-body">
+                <h5 class="card-title">
+                        {{nombre}}
+                </h5>
+                <p class="card-text">Precio: 
+                        {{precio}}
+                </p>
+                <p class="card-text">Stock: 
+                        {{stock}}
+                </p>
+                <p class="card-text">Categoria: 
+                        {{categoria}}
+                </p>
+                <a href="/add/:cid/carts/{{_id}}" class="btn btn-primary">Agregar: {{_id}}</a>
+            </div>
+        </div>
+    {{/each}}
 
-<script src="/js/index.js" ></script>
+</div>
+
+<div>
+    {{#if hasPrevPage}}
+    <a href={{this.prevLink}}>
+        << Anterior</a>
+        {{/if}}
+        &nbsp;
+        {{this.page}}
+        &nbsp;
+        {{#if hasNextPage}}
+        <a href={{this.nextLink}}>Siguiente >></a>
+        {{/if}}
+</div>
+
+{{else}}
+<h1>No hay productos para mostrar</h1>
+{{/if}}
